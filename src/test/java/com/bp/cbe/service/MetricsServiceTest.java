@@ -66,4 +66,12 @@ class MetricsServiceTest {
     assertNotNull(result);
     assertEquals(1, result.getId());
   }
+
+  @Test
+  void deleteById() {
+    when(this.metricsRepositoryMock.findById(id)).thenReturn(Optional.of(entity));
+    long result = this.metricsService.deleteById(id);
+    assertNotNull(result);
+    assertEquals(1, result);
+  }
 }
