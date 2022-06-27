@@ -16,13 +16,5 @@ public interface ReportRepository {
    * @param tribeId ID of the tribe from which the repositories are to be obtained
    * @return Report data found
    */
-  List<Object[]> getReport(long tribeId);
-
-  /**
-   * Obtain the repositories of a tribe
-   *
-   * @param tribeId ID of the tribe from which the repositories are to be obtained
-   * @return Report data found
-   */
-  List<RepositoryMetricsDto> getReportByCriteria(long tribeId);
+  List<RepositoryMetricsDto> getReport(long tribeId);
 }

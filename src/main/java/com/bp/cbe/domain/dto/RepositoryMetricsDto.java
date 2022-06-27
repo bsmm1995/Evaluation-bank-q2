@@ -21,7 +21,6 @@ public class RepositoryMetricsDto implements Serializable {
   private int bugs;
   private int vulnerabilities;
   private int hotspot;
-  private String verificationState;
 
   public RepositoryMetricsDto(Object[] row) {
     this.id = ((BigInteger) row[0]).longValue();
