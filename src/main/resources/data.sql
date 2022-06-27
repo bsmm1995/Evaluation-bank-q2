@@ -19,17 +19,17 @@ VALUES (3, 1, 'cd-common-log', 'E', 1, '2022-09-01');
 INSERT INTO repository (id_repository, id_tribe, name, state, status, create_time)
 VALUES (4, 2, 'rtl-common-utils', 'E', 1, '2022-11-01');
 INSERT INTO repository (id_repository, id_tribe, name, state, status, create_time)
-VALUES (5, 2, 'rtl-common-text', 'E', 1, '2021-11-03');
+VALUES (5, 2, 'rtl-common-text', 'E', 1, '2022-11-03');
 INSERT INTO repository (id_repository, id_tribe, name, state, status, create_time)
-VALUES (6, 2, 'rtl-common-log', 'E', 1, '2021-11-02');
+VALUES (6, 2, 'rtl-common-log', 'E', 1, '2022-11-02');
 INSERT INTO repository (id_repository, id_tribe, name, state, status, create_time)
-VALUES (7, 2, 'rtl-common-dates', 'E', 1, '2021-11-02');
+VALUES (7, 2, 'rtl-common-dates', 'E', 1, '2022-11-02');
 INSERT INTO repository (id_repository, id_tribe, name, state, status, create_time)
-VALUES (8, 3, 'cnl-common-utils', 'E', 1, '2021-11-02');
+VALUES (8, 3, 'cnl-common-utils', 'E', 1, '2022-11-02');
 INSERT INTO repository (id_repository, id_tribe, name, state, status, create_time)
-VALUES (9, 3, 'cnl-common-text', 'E', 1, '2021-11-02');
+VALUES (9, 3, 'cnl-common-text', 'E', 1, '2022-11-02');
 INSERT INTO repository (id_repository, id_tribe, name, state, status, create_time)
-VALUES (10, 3, 'cnl-common-log', 'E', 1, '2021-11-02');
+VALUES (10, 3, 'cnl-common-log', 'E', 1, '2022-11-02');
 
 INSERT INTO metrics (id_metrics, coverage, bugs, vulnerabilities, hotspot, code_smells, id_repository)
 VALUES (1, 0.35, 11, 1, 0, 2, 1);
