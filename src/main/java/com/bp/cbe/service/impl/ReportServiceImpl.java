@@ -20,11 +20,19 @@ public class ReportServiceImpl implements ReportService {
   private final ReportRepository repository;
   private final TribeService tribeService;
 
+  /** {@inheritDoc} */
   @Override
   public List<RepositoryMetricsDto> getDataByTribe(long tribeId) {
     this.tribeService.getById(tribeId);
     return repository.getReport(tribeId).stream()
         .map(RepositoryMetricsDto::new)
         .collect(Collectors.toList());
+  }
+
+  /** {@inheritDoc} */
+  @Override
+  public List<RepositoryMetricsDto> getDataByTribeCriteria(long tribeId) {
+    this.tribeService.getById(tribeId);
+    return this.repository.getReportByCriteria(tribeId);
   }
 }

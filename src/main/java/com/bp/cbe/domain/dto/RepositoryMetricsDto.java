@@ -13,6 +13,7 @@ import java.math.BigInteger;
 public class RepositoryMetricsDto implements Serializable {
   private long id;
   private String name;
+  private String state;
   private String tribe;
   private String organization;
   private double coverage;
@@ -21,7 +22,6 @@ public class RepositoryMetricsDto implements Serializable {
   private int vulnerabilities;
   private int hotspot;
   private String verificationState;
-  private String state;
 
   public RepositoryMetricsDto(Object[] row) {
     this.id = ((BigInteger) row[0]).longValue();
