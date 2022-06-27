@@ -35,4 +35,7 @@ public class RepositoryEntity {
   @ManyToOne
   @JoinColumn(name = "ID_TRIBE", nullable = false, updatable = false)
   private TribeEntity tribe;
+
+  @OneToOne(mappedBy = "repository")
+  private MetricsEntity metrics;
 }

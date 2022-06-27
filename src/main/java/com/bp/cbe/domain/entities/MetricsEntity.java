@@ -38,6 +38,6 @@ public class MetricsEntity {
   private Integer status = 1;
 
   @OneToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "id_repository")
+  @JoinColumn(name = "id_repository", referencedColumnName = "id_repository")
   private RepositoryEntity repository;
 }

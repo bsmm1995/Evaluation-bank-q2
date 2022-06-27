@@ -1,6 +1,7 @@
 package com.bp.cbe.service.impl;
 
 import com.bp.cbe.domain.dto.RepositoryDto;
+import com.bp.cbe.domain.dto.RepositoryWithMetricsDto;
 import com.bp.cbe.domain.entities.RepositoryEntity;
 import com.bp.cbe.exceptions.NotFoundException;
 import com.bp.cbe.repository.RepositoriesRepository;
@@ -35,6 +36,13 @@ public class RepositoriesServiceImpl implements RepositoriesService {
   public List<RepositoryDto> getAll() {
     return this.repositoriesRepository.findAll().stream()
         .map(this::entityToDto)
+        .collect(Collectors.toList());
+  }
+
+  @Override
+  public List<RepositoryWithMetricsDto> getAllWithMetrics() {
+    return this.repositoriesRepository.findAll().stream()
+        .map(element -> Mapper.modelMapper().map(element, RepositoryWithMetricsDto.class))
         .collect(Collectors.toList());
   }
 

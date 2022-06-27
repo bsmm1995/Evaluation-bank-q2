@@ -1,6 +1,7 @@
 package com.bp.cbe.service;
 
 import com.bp.cbe.domain.dto.RepositoryDto;
+import com.bp.cbe.domain.dto.RepositoryWithMetricsDto;
 
 import java.util.List;
 
@@ -24,6 +25,8 @@ public interface RepositoriesService {
    * @return List of all records found
    */
   List<RepositoryDto> getAll();
+
+  List<RepositoryWithMetricsDto> getAllWithMetrics();
 
   /**
    * Create a new record

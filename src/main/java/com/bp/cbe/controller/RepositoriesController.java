@@ -1,6 +1,7 @@
 package com.bp.cbe.controller;
 
 import com.bp.cbe.domain.dto.RepositoryDto;
+import com.bp.cbe.domain.dto.RepositoryWithMetricsDto;
 import com.bp.cbe.service.RepositoriesService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -44,6 +45,12 @@ public class RepositoriesController {
   public ResponseEntity<List<RepositoryDto>> getAll() {
     log.info("Get all.");
     return ResponseEntity.ok(this.repositoriesService.getAll());
+  }
+
+  @GetMapping("/metrics")
+  public ResponseEntity<List<RepositoryWithMetricsDto>> getAllWithMetrics() {
+    log.info("Get all with metrics.");
+    return ResponseEntity.ok(this.repositoriesService.getAllWithMetrics());
   }
 
   /**
