@@ -5,7 +5,6 @@ import com.bp.cbe.service.OrganizationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -79,7 +78,7 @@ public class OrganizationController {
      * @param id ID of the record to be deleted
      * @return Record ID deleted
      */
-    @DeleteMapping(value = "/{id}", produces = MediaType.TEXT_PLAIN_VALUE)
+    @DeleteMapping(value = "/{id}")
     public ResponseEntity<Long> delete(@PathVariable long id) {
         log.info("Delete. id=" + id);
         return ResponseEntity.ok(this.organizationService.deleteById(id));
