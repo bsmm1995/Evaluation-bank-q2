@@ -14,11 +14,15 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 public class OrganizationDto implements Serializable {
-  private long id;
+    private long id;
 
-  @NotEmpty(message = "The name of the organization cannot be null and void.")
-  @Size(max = 50, message = "The name of the organization cannot be longer than 50 characters.")
-  private String name;
+    @NotEmpty(message = "The name of the organization cannot be null and void.")
+    @Size(max = 50, message = "The name of the organization cannot be longer than 50 characters.")
+    private String name;
 
-  private List<TribeOutDto> tribes;
+    private List<TribeOutDto> tribes;
+
+    public OrganizationDto(String name) {
+        this.name = name;
+    }
 }
