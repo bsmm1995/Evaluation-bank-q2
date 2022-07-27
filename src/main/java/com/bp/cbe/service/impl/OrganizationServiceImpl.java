@@ -14,62 +14,56 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-/** {@inheritDoc} */
 @Service
 @Slf4j
 @AllArgsConstructor
 public class OrganizationServiceImpl implements OrganizationService {
-  private final OrganizationRepository organizationRepository;
+    private final OrganizationRepository organizationRepository;
 
-  /** {@inheritDoc} */
-  @Override
-  public OrganizationDto getById(long id) {
-    return entityToDto(getEntityById(id));
-  }
+    @Override
+    public OrganizationDto getById(long id) {
+        return entityToDto(getEntityById(id));
+    }
 
-  /** {@inheritDoc} */
-  @Override
-  public List<OrganizationDto> getAll() {
-    return this.organizationRepository.findAll().stream()
-        .map(this::entityToDto)
-        .collect(Collectors.toList());
-  }
+    @Override
+    public List<OrganizationDto> getAll() {
+        return this.organizationRepository.findAll().stream()
+                .map(this::entityToDto)
+                .collect(Collectors.toList());
+    }
 
-  /** {@inheritDoc} */
-  @Override
-  public OrganizationDto create(OrganizationDto data) {
-    OrganizationEntity entity = dtoToEntity(data);
-    return entityToDto(this.organizationRepository.save(entity));
-  }
+    @Override
+    public OrganizationDto create(OrganizationDto data) {
+        OrganizationEntity entity = dtoToEntity(data);
+        return entityToDto(this.organizationRepository.save(entity));
+    }
 
-  /** {@inheritDoc} */
-  @Override
-  public OrganizationDto update(long id, OrganizationDto data) {
-    getEntityById(id);
-    OrganizationEntity entity = dtoToEntity(data);
-    entity.setId(id);
-    return entityToDto(this.organizationRepository.save(entity));
-  }
+    @Override
+    public OrganizationDto update(long id, OrganizationDto data) {
+        getEntityById(id);
+        OrganizationEntity entity = dtoToEntity(data);
+        entity.setId(id);
+        return entityToDto(this.organizationRepository.save(entity));
+    }
 
-  /** {@inheritDoc} */
-  @Override
-  public long deleteById(long id) {
-    getEntityById(id);
-    this.organizationRepository.deleteById(id);
-    return id;
-  }
+    @Override
+    public long deleteById(long id) {
+        getEntityById(id);
+        this.organizationRepository.deleteById(id);
+        return id;
+    }
 
-  private OrganizationEntity getEntityById(long id) {
-    Optional<OrganizationEntity> optional = this.organizationRepository.findById(id);
-    return optional.orElseThrow(
-        () -> new NotFoundException(String.format("The organization with id %d does not exist.", id)));
-  }
+    private OrganizationEntity getEntityById(long id) {
+        Optional<OrganizationEntity> optional = this.organizationRepository.findById(id);
+        return optional.orElseThrow(
+                () -> new NotFoundException(String.format("The organization with id %d does not exist.", id)));
+    }
 
-  private OrganizationDto entityToDto(OrganizationEntity entity) {
-    return Mapper.modelMapper().map(entity, OrganizationDto.class);
-  }
+    private OrganizationDto entityToDto(OrganizationEntity entity) {
+        return Mapper.modelMapper().map(entity, OrganizationDto.class);
+    }
 
-  private OrganizationEntity dtoToEntity(OrganizationDto dto) {
-    return Mapper.modelMapper().map(dto, OrganizationEntity.class);
-  }
+    private OrganizationEntity dtoToEntity(OrganizationDto dto) {
+        return Mapper.modelMapper().map(dto, OrganizationEntity.class);
+    }
 }

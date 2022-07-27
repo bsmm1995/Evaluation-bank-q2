@@ -10,19 +10,17 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/** {@inheritDoc} */
 @Service
 @Slf4j
 @AllArgsConstructor
 public class ReportServiceImpl implements ReportService {
 
-  private final ReportRepository repository;
-  private final TribeService tribeService;
+    private final ReportRepository repository;
+    private final TribeService tribeService;
 
-  /** {@inheritDoc} */
-  @Override
-  public List<RepositoryMetricsDto> getDataByTribe(long tribeId) {
-    this.tribeService.getById(tribeId);
-    return repository.getReport(tribeId);
-  }
+    @Override
+    public List<RepositoryMetricsDto> getDataByTribe(long tribeId) {
+        this.tribeService.getById(tribeId);
+        return repository.getReport(tribeId);
+    }
 }

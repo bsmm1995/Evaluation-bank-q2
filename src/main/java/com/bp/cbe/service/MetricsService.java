@@ -10,43 +10,13 @@ import java.util.List;
  */
 public interface MetricsService {
 
-  /**
-   * Obtain a record by ID
-   *
-   * @param id ID of the record to be searched
-   * @return Record found
-   */
-  MetricsDto getById(long id);
+    MetricsDto getById(long id);
 
-  /**
-   * Get all records
-   *
-   * @return List of all records found
-   */
-  List<MetricsDto> getAll();
+    List<MetricsDto> getAll();
 
-  /**
-   * Create a new record
-   *
-   * @param data Object containing the new record information
-   * @return Record created
-   */
-  MetricsDto create(MetricsDto data);
+    MetricsDto create(MetricsDto data);
 
-  /**
-   * Update a record by its ID
-   *
-   * @param id ID of the record to be updated
-   * @param data Object that contains the registration information to be updated.
-   * @return Record updated
-   */
-  MetricsDto update(long id, MetricsDto data);
+    MetricsDto update(long id, MetricsDto data);
 
-  /**
-   * Delete a record by its ID
-   *
-   * @param id ID of the record to be deleted
-   * @return Record ID deleted
-   */
-  long deleteById(long id);
+    long deleteById(long id);
 }

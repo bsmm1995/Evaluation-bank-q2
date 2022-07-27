@@ -23,17 +23,17 @@ import java.util.List;
 @RequestMapping(value = "/reports")
 @Valid
 public class ReportController {
-  private final ReportService reportService;
+    private final ReportService reportService;
 
-  /**
-   * Obtain the repositories of a tribe
-   *
-   * @param tribeId ID of the tribe from which the repositories are to be obtained
-   * @return Report data found
-   */
-  @GetMapping("/repositories/{tribeId}")
-  public ResponseEntity<List<RepositoryMetricsDto>> getDataByTribe(@PathVariable long tribeId) {
-    log.info("Get by id. tribeId=" + tribeId);
-    return ResponseEntity.ok(this.reportService.getDataByTribe(tribeId));
-  }
+    /**
+     * Obtain the repositories of a tribe
+     *
+     * @param tribeId ID of the tribe from which the repositories are to be obtained
+     * @return Report data found
+     */
+    @GetMapping("/repositories/{tribeId}")
+    public ResponseEntity<List<RepositoryMetricsDto>> getDataByTribe(@PathVariable long tribeId) {
+        log.info("Get by id. tribeId=" + tribeId);
+        return ResponseEntity.ok(this.reportService.getDataByTribe(tribeId));
+    }
 }

@@ -15,66 +15,60 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-/** {@inheritDoc} */
 @Service
 @Slf4j
 @AllArgsConstructor
 public class TribeServiceImpl implements TribeService {
 
-  private final TribeRepository tribeRepository;
-  private final OrganizationService organizationService;
+    private final TribeRepository tribeRepository;
+    private final OrganizationService organizationService;
 
-  /** {@inheritDoc} */
-  @Override
-  public TribeDto getById(long id) {
-    return entityToDto(getEntityById(id));
-  }
+    @Override
+    public TribeDto getById(long id) {
+        return entityToDto(getEntityById(id));
+    }
 
-  /** {@inheritDoc} */
-  @Override
-  public List<TribeDto> getAll() {
-    return this.tribeRepository.findAll().stream()
-        .map(this::entityToDto)
-        .collect(Collectors.toList());
-  }
+    @Override
+    public List<TribeDto> getAll() {
+        return this.tribeRepository.findAll().stream()
+                .map(this::entityToDto)
+                .collect(Collectors.toList());
+    }
 
-  /** {@inheritDoc} */
-  @Override
-  public TribeDto create(TribeDto data) {
-    this.organizationService.getById(data.getOrganization().getId());
-    TribeEntity entity = dtoToEntity(data);
-    return entityToDto(this.tribeRepository.save(entity));
-  }
+    @Override
+    public TribeDto create(TribeDto data) {
+        this.organizationService.getById(data.getOrganization().getId());
+        TribeEntity entity = dtoToEntity(data);
+        return entityToDto(this.tribeRepository.save(entity));
+    }
 
-  /** {@inheritDoc} */
-  @Override
-  public TribeDto update(long id, TribeDto data) {
-    getEntityById(id);
-    this.organizationService.getById(data.getOrganization().getId());
-    TribeEntity entity = dtoToEntity(data);
-    entity.setId(id);
-    return entityToDto(this.tribeRepository.save(entity));
-  }
+    @Override
+    public TribeDto update(long id, TribeDto data) {
+        getEntityById(id);
+        this.organizationService.getById(data.getOrganization().getId());
+        TribeEntity entity = dtoToEntity(data);
+        entity.setId(id);
+        return entityToDto(this.tribeRepository.save(entity));
+    }
 
-  /** {@inheritDoc} */
-  @Override
-  public long deleteById(long id) {
-    getEntityById(id);
-    this.tribeRepository.deleteById(id);
-    return id;
-  }
+    @Override
+    public long deleteById(long id) {
+        getEntityById(id);
+        this.tribeRepository.deleteById(id);
+        return id;
+    }
 
-  private TribeEntity getEntityById(long id) {
-    Optional<TribeEntity> optional = this.tribeRepository.findById(id);
-    return optional.orElseThrow(
-        () -> new NotFoundException(String.format("The tribe with id %d does not exist.", id)));
-  }
+    private TribeEntity getEntityById(long id) {
+        Optional<TribeEntity> optional = this.tribeRepository.findById(id);
+        return optional.orElseThrow(
+                () -> new NotFoundException(String.format("The tribe with id %d does not exist.", id)));
+    }
 
-  private TribeDto entityToDto(TribeEntity entity) {
-    return Mapper.modelMapper().map(entity, TribeDto.class);
-  }
+    private TribeDto entityToDto(TribeEntity entity) {
+        return Mapper.modelMapper().map(entity, TribeDto.class);
+    }
 
-  private TribeEntity dtoToEntity(TribeDto dto) {
-    return Mapper.modelMapper().map(dto, TribeEntity.class);
-  }
+    private TribeEntity dtoToEntity(TribeDto dto) {
+        return Mapper.modelMapper().map(dto, TribeEntity.class);
+    }
 }
