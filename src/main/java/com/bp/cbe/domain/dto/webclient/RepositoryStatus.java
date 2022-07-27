@@ -2,8 +2,9 @@ package com.bp.cbe.domain.dto.webclient;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class RepositoryStatus {
-    private long id;
-    private long state;
+    private List<RepositoryStatusDetail> repositories;
 }

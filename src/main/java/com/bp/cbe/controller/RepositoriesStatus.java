@@ -1,6 +1,6 @@
 package com.bp.cbe.controller;
 
-import com.bp.cbe.domain.dto.webclient.RepositoryStatus;
+import com.bp.cbe.domain.dto.webclient.RepositoryStatusDetail;
 import com.bp.cbe.helpers.webclient.RepositoryStatusWC;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,7 +25,7 @@ public class RepositoriesStatus {
     private final RepositoryStatusWC repositoryStatusWC;
 
     @GetMapping
-    public ResponseEntity<List<RepositoryStatus>> getById() {
+    public ResponseEntity<List<RepositoryStatusDetail>> getById() {
         return ResponseEntity.ok(repositoryStatusWC.getAllStatus());
     }
 }

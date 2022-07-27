@@ -1,7 +1,7 @@
 package com.bp.cbe.helpers.webclient.impl;
 
+import com.bp.cbe.domain.dto.webclient.RepositoryStatusDetail;
 import com.bp.cbe.domain.dto.webclient.RepositoryStatus;
-import com.bp.cbe.domain.dto.webclient.ResponseWC;
 import com.bp.cbe.helpers.webclient.RepositoryStatusWC;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -19,9 +19,9 @@ public class RepositoryStatusWCImpl implements RepositoryStatusWC {
     }
 
     @Override
-    public List<RepositoryStatus> getAllStatus() {
-        Mono<ResponseWC> mono = this.wClient.get().uri("/v1/repositories/verified")
-                .retrieve().bodyToMono(ResponseWC.class);
+    public List<RepositoryStatusDetail> getAllStatus() {
+        Mono<RepositoryStatus> mono = this.wClient.get().uri("/v1/repositories/verified")
+                .retrieve().bodyToMono(RepositoryStatus.class);
         return Objects.requireNonNull(mono.block()).getRepositories();
     }
 }
