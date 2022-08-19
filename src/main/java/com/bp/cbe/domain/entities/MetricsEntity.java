@@ -11,33 +11,32 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "metrics")
+@Entity(name = "metrics")
 public class MetricsEntity {
-  @Id
-  @GeneratedValue(strategy = GenerationType.TABLE, generator = "GEN")
-  @Column(name = "id_metrics", nullable = false, unique = true)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "GEN")
+    @Column(name = "id_metrics", nullable = false, unique = true)
+    private Long id;
 
-  @Column(name = "coverage", nullable = false)
-  private Double coverage;
+    @Column(name = "coverage", nullable = false)
+    private Double coverage;
 
-  @Column(name = "bugs", nullable = false)
-  private Integer bugs;
+    @Column(name = "bugs", nullable = false)
+    private Integer bugs;
 
-  @Column(name = "vulnerabilities", nullable = false)
-  private Integer vulnerabilities;
+    @Column(name = "vulnerabilities", nullable = false)
+    private Integer vulnerabilities;
 
-  @Column(name = "hotspot", nullable = false)
-  private Integer hotspot;
+    @Column(name = "hotspot", nullable = false)
+    private Integer hotspot;
 
-  @Column(name = "code_smells", nullable = false)
-  private Integer codeSmells;
+    @Column(name = "code_smells", nullable = false)
+    private Integer codeSmells;
 
-  @Column(name = "status", columnDefinition = "INT NOT NULL DEFAULT 1")
-  private Integer status = 1;
+    @Column(name = "status", columnDefinition = "INT NOT NULL DEFAULT 1")
+    private Integer status = 1;
 
-  @OneToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "id_repository", referencedColumnName = "id_repository")
-  private RepositoryEntity repository;
+    @OneToOne(fetch = FetchType.LAZY)
+    @PrimaryKeyJoinColumn(name = "id_metrics", referencedColumnName = "id_repository")
+    private RepositoryEntity repository;
 }

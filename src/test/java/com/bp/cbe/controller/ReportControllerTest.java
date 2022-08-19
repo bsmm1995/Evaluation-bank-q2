@@ -18,28 +18,27 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class ReportControllerTest {
+    private ReportController reportController;
+    private ReportService reportServiceMock;
 
-  private ReportController reportController;
-  private ReportService reportServiceMock;
+    @BeforeEach
+    void setUp() {
+        reportServiceMock = Mockito.mock(ReportServiceImpl.class);
+        reportController = new ReportController(reportServiceMock);
+    }
 
-  @BeforeEach
-  void setUp() {
-    reportServiceMock = Mockito.mock(ReportServiceImpl.class);
-    reportController = new ReportController(reportServiceMock);
-  }
+    @Test
+    void getDataByTribe() {
+        long id = 1;
+        RepositoryMetricsDto dto = new RepositoryMetricsDto();
+        dto.setId(id);
+        dto.setCoverage(0.80);
+        dto.setBugs(10);
 
-  @Test
-  void getDataByTribe() {
-    long id = 1;
-    RepositoryMetricsDto dto = new RepositoryMetricsDto();
-    dto.setId(id);
-    dto.setCoverage(0.80);
-    dto.setBugs(10);
+        when(this.reportServiceMock.getDataByTribe(id)).thenReturn(List.of(dto));
+        ResponseEntity<List<RepositoryMetricsDto>> result = this.reportController.getDataByTribe(1);
 
-    when(this.reportServiceMock.getDataByTribe(id)).thenReturn(List.of(dto));
-    ResponseEntity<List<RepositoryMetricsDto>> result = this.reportController.getDataByTribe(1);
-
-    assertNotNull(result.getBody());
-    assertEquals(1, result.getBody().size());
-  }
+        assertNotNull(result.getBody());
+        assertEquals(1, result.getBody().size());
+    }
 }

@@ -12,20 +12,19 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "organization")
+@Entity(name = "organization")
 public class OrganizationEntity {
-  @Id
-  @GeneratedValue(strategy = GenerationType.TABLE, generator = "GEN")
-  @Column(name = "id_organization", nullable = false, unique = true)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "GEN")
+    @Column(name = "id_organization", nullable = false, unique = true)
+    private Long id;
 
-  @Column(name = "name", nullable = false, length = 50)
-  private String name;
+    @Column(name = "name", nullable = false, length = 50)
+    private String name;
 
-  @Column(name = "status", columnDefinition = "INT NOT NULL DEFAULT 1")
-  private Integer status = 1;
+    @Column(name = "status", columnDefinition = "INT NOT NULL DEFAULT 1")
+    private Integer status = 1;
 
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "organization")
-  private List<TribeEntity> tribes;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "organization")
+    private List<TribeEntity> tribes;
 }

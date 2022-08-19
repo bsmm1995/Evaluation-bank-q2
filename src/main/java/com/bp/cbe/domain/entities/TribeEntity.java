@@ -12,24 +12,23 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "tribe")
+@Entity(name = "tribe")
 public class TribeEntity {
-  @Id
-  @GeneratedValue(strategy = GenerationType.TABLE, generator = "GEN")
-  @Column(name = "id_tribe", nullable = false, unique = true)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "GEN")
+    @Column(name = "id_tribe", nullable = false, unique = true)
+    private Long id;
 
-  @Column(name = "name")
-  private String name;
+    @Column(name = "name")
+    private String name;
 
-  @Column(name = "status", columnDefinition = "INT NOT NULL DEFAULT 1")
-  private Integer status = 1;
+    @Column(name = "status", columnDefinition = "INT NOT NULL DEFAULT 1")
+    private Integer status = 1;
 
-  @ManyToOne
-  @JoinColumn(name = "ID_ORGANIZATION", nullable = false, updatable = false)
-  private OrganizationEntity organization;
+    @ManyToOne
+    @JoinColumn(name = "ID_ORGANIZATION", nullable = false, updatable = false)
+    private OrganizationEntity organization;
 
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "tribe")
-  private List<RepositoryEntity> repositories;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tribe")
+    private List<RepositoryEntity> repositories;
 }
