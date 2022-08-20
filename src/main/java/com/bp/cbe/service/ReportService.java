@@ -9,6 +9,5 @@ import java.util.List;
  * @version: 24/06/2022
  */
 public interface ReportService {
-
   List<RepositoryMetricsDto> getDataByTribe(long tribeId);
 }

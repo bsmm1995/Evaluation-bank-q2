@@ -20,57 +20,50 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class MetricsServiceTest {
-  private MetricsService metricsService;
-  private MetricsRepository metricsRepositoryMock;
-  MetricsEntity entity;
-  MetricsDto metricsDto;
-  long id = 1;
+    private MetricsService metricsService;
+    private MetricsRepository metricsRepositoryMock;
+    MetricsEntity entity;
+    MetricsDto metricsDto;
+    long id = 1;
 
-  @BeforeEach
-  void setUp() {
-    this.metricsRepositoryMock = Mockito.mock(MetricsRepository.class);
-    this.metricsService = new MetricsServiceImpl(this.metricsRepositoryMock);
-    this.entity = new MetricsEntity(id, 50.0, 1, 1, 1, 1, 1, null);
-    metricsDto = new MetricsDto(id, 50.0, 1, 1, 1, 1, null);
-  }
+    @BeforeEach
+    void setUp() {
+        this.metricsRepositoryMock = Mockito.mock(MetricsRepository.class);
+        this.metricsService = new MetricsServiceImpl(this.metricsRepositoryMock);
+        this.entity = new MetricsEntity(id, 50.0, 1, 1, 1, 1, 1, null);
+        metricsDto = new MetricsDto(id, 50.0, 1, 1, 1, 1, null);
+    }
 
-  @Test
-  void getById() {
-    when(this.metricsRepositoryMock.findById(id)).thenReturn(Optional.of(entity));
-    MetricsDto result = this.metricsService.getById(id);
-    assertNotNull(result);
-    assertEquals(id, result.getId());
-  }
+    @Test
+    void getById() {
+        when(this.metricsRepositoryMock.findById(id)).thenReturn(Optional.of(entity));
+        MetricsDto result = this.metricsService.getById(id);
+        assertNotNull(result);
+        assertEquals(id, result.getId());
+    }
 
-  @Test
-  void getAll() {
-    when(this.metricsRepositoryMock.findAll()).thenReturn(List.of(entity));
-    List<MetricsDto> result = this.metricsService.getAll();
-    assertNotNull(result);
-    assertEquals(1, result.size());
-  }
+    @Test
+    void getAll() {
+        when(this.metricsRepositoryMock.findAll()).thenReturn(List.of(entity));
+        List<MetricsDto> result = this.metricsService.getAll();
+        assertNotNull(result);
+        assertEquals(1, result.size());
+    }
 
-  @Test
-  void create() {
-    when(this.metricsRepositoryMock.save(any())).thenReturn(entity);
-    MetricsDto result = this.metricsService.create(metricsDto);
-    assertNotNull(result);
-    assertEquals(1, result.getId());
-  }
+    @Test
+    void create() {
+        when(this.metricsRepositoryMock.save(any())).thenReturn(entity);
+        MetricsDto result = this.metricsService.create(metricsDto);
+        assertNotNull(result);
+        assertEquals(1, result.getId());
+    }
 
-  @Test
-  void update() {
-    when(this.metricsRepositoryMock.findById(id)).thenReturn(Optional.of(entity));
-    when(this.metricsRepositoryMock.save(any())).thenReturn(entity);
-    MetricsDto result = this.metricsService.update(id, metricsDto);
-    assertNotNull(result);
-    assertEquals(1, result.getId());
-  }
-
-  @Test
-  void deleteById() {
-    when(this.metricsRepositoryMock.findById(id)).thenReturn(Optional.of(entity));
-    long result = this.metricsService.deleteById(id);
-    assertEquals(1, result);
-  }
+    @Test
+    void update() {
+        when(this.metricsRepositoryMock.findById(id)).thenReturn(Optional.of(entity));
+        when(this.metricsRepositoryMock.save(any())).thenReturn(entity);
+        MetricsDto result = this.metricsService.update(id, metricsDto);
+        assertNotNull(result);
+        assertEquals(1, result.getId());
+    }
 }
