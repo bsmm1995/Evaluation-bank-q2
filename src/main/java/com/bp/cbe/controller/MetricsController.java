@@ -79,8 +79,9 @@ public class MetricsController {
      * @return Record ID deleted
      */
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Long> delete(@PathVariable long id) {
+    public ResponseEntity<Void> delete(@PathVariable long id) {
         log.info("Delete. id=" + id);
-        return ResponseEntity.ok(this.metricsService.deleteById(id));
+        this.metricsService.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }

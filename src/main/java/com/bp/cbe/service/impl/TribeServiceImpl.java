@@ -24,7 +24,7 @@ public class TribeServiceImpl implements TribeService {
     private final OrganizationService organizationService;
 
     @Override
-    public TribeDto getById(long id) {
+    public TribeDto getById(Long id) {
         return entityToDto(getEntityById(id));
     }
 
@@ -43,19 +43,16 @@ public class TribeServiceImpl implements TribeService {
     }
 
     @Override
-    public TribeDto update(long id, TribeDto data) {
-        getEntityById(id);
+    public TribeDto update(Long id, TribeDto data) {
         this.organizationService.getById(data.getOrganization().getId());
-        TribeEntity entity = dtoToEntity(data);
-        entity.setId(id);
+        TribeEntity entity = getEntityById(id);
+        entity.setName(data.getName());
         return entityToDto(this.tribeRepository.save(entity));
     }
 
     @Override
-    public long deleteById(long id) {
-        getEntityById(id);
-        this.tribeRepository.deleteById(id);
-        return id;
+    public void deleteById(Long id) {
+        this.tribeRepository.delete(getEntityById(id));
     }
 
     private TribeEntity getEntityById(long id) {

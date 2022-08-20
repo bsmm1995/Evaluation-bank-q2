@@ -25,7 +25,7 @@ public class MetricsServiceImpl implements MetricsService {
     private final MetricsRepository metricsRepository;
 
     @Override
-    public MetricsDto getById(long id) {
+    public MetricsDto getById(Long id) {
         return entityToDto(getEntityById(id));
     }
 
@@ -44,18 +44,19 @@ public class MetricsServiceImpl implements MetricsService {
     }
 
     @Override
-    public MetricsDto update(long id, MetricsDto data) {
-        getEntityById(id);
-        MetricsEntity entity = dtoToEntity(data);
-        entity.setId(id);
+    public MetricsDto update(Long id, MetricsDto data) {
+        MetricsEntity entity = getEntityById(id);
+        entity.setHotspot(data.getHotspot());
+        entity.setCodeSmells(entity.getCodeSmells());
+        entity.setCoverage(data.getCoverage());
+        entity.setBugs(data.getBugs());
+        entity.setVulnerabilities(data.getVulnerabilities());
         return entityToDto(this.metricsRepository.save(entity));
     }
 
     @Override
-    public long deleteById(long id) {
-        getEntityById(id);
-        this.metricsRepository.deleteById(id);
-        return id;
+    public void deleteById(Long id) {
+        this.metricsRepository.delete(getEntityById(id));
     }
 
     private MetricsEntity getEntityById(long id) {

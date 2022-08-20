@@ -80,6 +80,7 @@ public class TribeController {
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Long> delete(@PathVariable long id) {
         log.info("Delete. id=" + id);
-        return ResponseEntity.ok(this.tribeService.deleteById(id));
+        this.tribeService.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }

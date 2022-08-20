@@ -9,17 +9,6 @@ import java.util.List;
  * @author: Bladimir Minga <bsminga@pichincha.com>
  * @version: 24/06/2022
  */
-public interface RepositoriesService {
-
-    RepositoryDto getById(long id);
-
-    List<RepositoryDto> getAll();
-
+public interface RepositoriesService extends Service<RepositoryDto, Long> {
     List<RepositoryWithMetricsDto> getAllWithMetrics();
-
-    RepositoryDto create(RepositoryDto data);
-
-    RepositoryDto update(long id, RepositoryDto data);
-
-    long deleteById(long id);
 }

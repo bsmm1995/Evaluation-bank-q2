@@ -88,6 +88,7 @@ public class RepositoriesController {
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Long> delete(@PathVariable long id) {
         log.info("Delete. id=" + id);
-        return ResponseEntity.ok(this.repositoriesService.deleteById(id));
+        this.repositoriesService.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }

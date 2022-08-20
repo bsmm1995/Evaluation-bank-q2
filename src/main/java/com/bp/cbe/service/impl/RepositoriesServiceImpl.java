@@ -25,7 +25,7 @@ public class RepositoriesServiceImpl implements RepositoriesService {
     private final TribeService tribeService;
 
     @Override
-    public RepositoryDto getById(long id) {
+    public RepositoryDto getById(Long id) {
         return entityToDto(getEntityById(id));
     }
 
@@ -51,19 +51,16 @@ public class RepositoriesServiceImpl implements RepositoriesService {
     }
 
     @Override
-    public RepositoryDto update(long id, RepositoryDto data) {
-        getEntityById(id);
+    public RepositoryDto update(Long id, RepositoryDto data) {
         this.tribeService.getById(data.getTribe().getIdTribe());
-        RepositoryEntity entity = dtoToEntity(data);
-        entity.setId(id);
+        RepositoryEntity entity = getEntityById(id);
+        entity.setName(data.getName());
         return entityToDto(this.repositoriesRepository.save(entity));
     }
 
     @Override
-    public long deleteById(long id) {
-        getEntityById(id);
-        this.repositoriesRepository.deleteById(id);
-        return id;
+    public void deleteById(Long id) {
+        this.repositoriesRepository.delete(getEntityById(id));
     }
 
     private RepositoryEntity getEntityById(long id) {

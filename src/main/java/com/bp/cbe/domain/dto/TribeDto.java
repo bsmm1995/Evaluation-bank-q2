@@ -12,10 +12,10 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Data
 public class TribeDto implements Serializable {
-  private long id;
+    private long id;
 
-  @NotEmpty(message = "The tribe name cannot be null or empty.")
-  private String name;
+    @NotEmpty(message = "The tribe name cannot be null or empty.")
+    private String name;
 
-  private OrganizationOutDto organization;
+    private OrganizationOutDto organization;
 }

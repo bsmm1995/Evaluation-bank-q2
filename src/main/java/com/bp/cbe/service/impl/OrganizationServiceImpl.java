@@ -21,15 +21,13 @@ public class OrganizationServiceImpl implements OrganizationService {
     private final OrganizationRepository organizationRepository;
 
     @Override
-    public OrganizationDto getById(long id) {
+    public OrganizationDto getById(Long id) {
         return entityToDto(getEntityById(id));
     }
 
     @Override
     public List<OrganizationDto> getAll() {
-        return this.organizationRepository.findAll().stream()
-                .map(this::entityToDto)
-                .collect(Collectors.toList());
+        return this.organizationRepository.findAll().stream().map(this::entityToDto).collect(Collectors.toList());
     }
 
     @Override
@@ -39,24 +37,20 @@ public class OrganizationServiceImpl implements OrganizationService {
     }
 
     @Override
-    public OrganizationDto update(long id, OrganizationDto data) {
-        getEntityById(id);
-        OrganizationEntity entity = dtoToEntity(data);
-        entity.setId(id);
+    public OrganizationDto update(Long id, OrganizationDto data) {
+        OrganizationEntity entity = getEntityById(id);
+        entity.setName(data.getName());
         return entityToDto(this.organizationRepository.save(entity));
     }
 
     @Override
-    public long deleteById(long id) {
-        getEntityById(id);
-        this.organizationRepository.deleteById(id);
-        return id;
+    public void deleteById(Long id) {
+        this.organizationRepository.delete(getEntityById(id));
     }
 
     private OrganizationEntity getEntityById(long id) {
         Optional<OrganizationEntity> optional = this.organizationRepository.findById(id);
-        return optional.orElseThrow(
-                () -> new NotFoundException(String.format("The organization with id %d does not exist.", id)));
+        return optional.orElseThrow(() -> new NotFoundException(String.format("The organization with id %d does not exist.", id)));
     }
 
     private OrganizationDto entityToDto(OrganizationEntity entity) {

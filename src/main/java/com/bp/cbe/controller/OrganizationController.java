@@ -81,6 +81,7 @@ public class OrganizationController {
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Long> delete(@PathVariable long id) {
         log.info("Delete. id=" + id);
-        return ResponseEntity.ok(this.organizationService.deleteById(id));
+        this.organizationService.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }
