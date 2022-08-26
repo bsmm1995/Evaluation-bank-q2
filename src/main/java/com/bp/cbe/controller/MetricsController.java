@@ -19,7 +19,6 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 @RequestMapping(value = "/metrics")
-@Valid
 public class MetricsController {
     private final MetricsService metricsService;
 

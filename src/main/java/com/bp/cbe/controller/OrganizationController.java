@@ -19,7 +19,6 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 @RequestMapping(value = "/organizations")
-@Valid
 public class OrganizationController {
     private final OrganizationService organizationService;
 
@@ -79,7 +78,7 @@ public class OrganizationController {
      * @return Record ID deleted
      */
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Long> delete(@PathVariable long id) {
+    public ResponseEntity<Void> delete(@PathVariable long id) {
         log.info("Delete. id=" + id);
         this.organizationService.deleteById(id);
         return ResponseEntity.noContent().build();

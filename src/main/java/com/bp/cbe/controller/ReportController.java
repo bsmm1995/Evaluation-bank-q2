@@ -21,7 +21,6 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 @RequestMapping(value = "/reports")
-@Valid
 public class ReportController {
     private final ReportService reportService;
 

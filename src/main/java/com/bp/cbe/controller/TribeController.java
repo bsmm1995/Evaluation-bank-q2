@@ -19,7 +19,6 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 @RequestMapping(value = "/tribes")
-@Valid
 public class TribeController {
     private final TribeService tribeService;
 
@@ -78,7 +77,7 @@ public class TribeController {
      * @return Record ID deleted
      */
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Long> delete(@PathVariable long id) {
+    public ResponseEntity<Void> delete(@PathVariable long id) {
         log.info("Delete. id=" + id);
         this.tribeService.deleteById(id);
         return ResponseEntity.noContent().build();

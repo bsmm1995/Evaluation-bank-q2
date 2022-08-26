@@ -20,7 +20,6 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 @RequestMapping(value = "/repositories-status")
-@Valid
 public class RepositoriesStatus {
     private final RepositoryStatusWC repositoryStatusWC;
 
