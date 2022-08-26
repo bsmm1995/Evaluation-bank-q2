@@ -33,8 +33,7 @@ public class ReportRepositoryImpl implements ReportRepository {
 
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 
-        CriteriaQuery<RepositoryMetricsDto> query =
-                criteriaBuilder.createQuery(RepositoryMetricsDto.class);
+        CriteriaQuery<RepositoryMetricsDto> query = criteriaBuilder.createQuery(RepositoryMetricsDto.class);
 
         Root<RepositoryEntity> root = query.from(RepositoryEntity.class);
 
