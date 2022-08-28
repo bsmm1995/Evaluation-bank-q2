@@ -1,10 +1,10 @@
-package com.bp.cbe.service.impl;
+package com.bp.cbe.service;
 
 import com.bp.cbe.domain.dto.TribeDto;
 import com.bp.cbe.domain.entities.TribeEntity;
 import com.bp.cbe.exceptions.NotFoundException;
 import com.bp.cbe.repository.TribeRepository;
-import com.bp.cbe.service.TribeService;
+import com.bp.cbe.service.impl.TribeServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class TribeServiceImplTest {
+class TribeServiceTest {
 
     TribeService tribeService;
     TribeRepository tribeRepositoryMock;

@@ -18,8 +18,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.core.Is.is;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -75,13 +73,9 @@ class EvaluationTest {
 
         OrganizationDto nueva = objectMapper.readValue(mvcResult.getResponse().getContentAsString(), OrganizationDto.class);
 
-        MvcResult result = mvc.perform(MockMvcRequestBuilders.delete("/organizations/" + nueva.getId()).contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn();
-        String id = result.getResponse().getContentAsString();
+        mvc.perform(MockMvcRequestBuilders.delete("/organizations/" + nueva.getId()).contentType(MediaType.APPLICATION_JSON)).andExpect(status().isNoContent()).andReturn();
 
-        assertNotNull(id);
-        assertEquals(id, String.valueOf(nueva.getId()));
-
-        mvc.perform(MockMvcRequestBuilders.get("/organizations/" + id).contentType(MediaType.APPLICATION_JSON)).andDo(print()).andExpect(status().is4xxClientError()).andExpect(jsonPath("$.message", is("The organization with id " + id + " does not exist.")));
+        mvc.perform(MockMvcRequestBuilders.get("/organizations/" + nueva.getId()).contentType(MediaType.APPLICATION_JSON)).andDo(print()).andExpect(status().is4xxClientError()).andExpect(jsonPath("$.message", is("The organization with id " + nueva.getId() + " does not exist.")));
     }
 
     @Test

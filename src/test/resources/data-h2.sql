@@ -1,5 +1,5 @@
 INSERT INTO organization (id_organization, name, status)
-VALUES (1, 'Organization Test', 1);
+VALUES (1, 'Banco Pichincha', 1);
 
 INSERT INTO tribe (id_tribe, id_organization, name, status)
 VALUES (1, 1, 'Centro Digital', 1);
