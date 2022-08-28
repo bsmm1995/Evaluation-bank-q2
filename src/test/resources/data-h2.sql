@@ -31,26 +31,26 @@ VALUES (9, 3, 'cnl-common-text', 'E', 1, '2022-11-02');
 INSERT INTO repository (id_repository, id_tribe, name, state, status, create_time)
 VALUES (10, 3, 'cnl-common-log', 'E', 1, '2022-11-02');
 
-INSERT INTO metrics (id_metrics, coverage, bugs, vulnerabilities, hotspot, code_smells, id_repository)
-VALUES (1, 0.35, 11, 1, 0, 2, 1);
-INSERT INTO metrics (id_metrics, coverage, bugs, vulnerabilities, hotspot, code_smells, id_repository)
-VALUES (2, 0.25, 8, 0, 0, 0, 2);
-INSERT INTO metrics (id_metrics, coverage, bugs, vulnerabilities, hotspot, code_smells, id_repository)
-VALUES (3, 0.75, 0, 0, 0, 0, 3);
-INSERT INTO metrics (id_metrics, coverage, bugs, vulnerabilities, hotspot, code_smells, id_repository)
-VALUES (4, 0.93, 0, 0, 0, 0, 4);
-INSERT INTO metrics (id_metrics, coverage, bugs, vulnerabilities, hotspot, code_smells, id_repository)
-VALUES (5, 0.56, 5, 0, 1, 0, 5);
-INSERT INTO metrics (id_metrics, coverage, bugs, vulnerabilities, hotspot, code_smells, id_repository)
-VALUES (6, 0.80, 0, 1, 0, 3, 6);
-INSERT INTO metrics (id_metrics, coverage, bugs, vulnerabilities, hotspot, code_smells, id_repository)
-VALUES (7, 0.67, 2, 1, 0, 0, 7);
-INSERT INTO metrics (id_metrics, coverage, bugs, vulnerabilities, hotspot, code_smells, id_repository)
-VALUES (8, 0.96, 0, 0, 0, 0, 8);
-INSERT INTO metrics (id_metrics, coverage, bugs, vulnerabilities, hotspot, code_smells, id_repository)
-VALUES (9, 0.36, 2, 0, 1, 0, 9);
-INSERT INTO metrics (id_metrics, coverage, bugs, vulnerabilities, hotspot, code_smells, id_repository)
-VALUES (10, 0.39, 2, 0, 0, 2, 10);
+INSERT INTO metrics (id_metrics, coverage, bugs, vulnerabilities, hotspot, code_smells)
+VALUES (1, 0.35, 11, 1, 0, 2);
+INSERT INTO metrics (id_metrics, coverage, bugs, vulnerabilities, hotspot, code_smells)
+VALUES (2, 0.25, 8, 0, 0, 0);
+INSERT INTO metrics (id_metrics, coverage, bugs, vulnerabilities, hotspot, code_smells)
+VALUES (3, 0.75, 0, 0, 0, 0);
+INSERT INTO metrics (id_metrics, coverage, bugs, vulnerabilities, hotspot, code_smells)
+VALUES (4, 0.93, 0, 0, 0, 0);
+INSERT INTO metrics (id_metrics, coverage, bugs, vulnerabilities, hotspot, code_smells)
+VALUES (5, 0.56, 5, 0, 1, 0);
+INSERT INTO metrics (id_metrics, coverage, bugs, vulnerabilities, hotspot, code_smells)
+VALUES (6, 0.80, 0, 1, 0, 3);
+INSERT INTO metrics (id_metrics, coverage, bugs, vulnerabilities, hotspot, code_smells)
+VALUES (7, 0.67, 2, 1, 0, 0);
+INSERT INTO metrics (id_metrics, coverage, bugs, vulnerabilities, hotspot, code_smells)
+VALUES (8, 0.96, 0, 0, 0, 0);
+INSERT INTO metrics (id_metrics, coverage, bugs, vulnerabilities, hotspot, code_smells)
+VALUES (9, 0.36, 2, 0, 1, 0);
+INSERT INTO metrics (id_metrics, coverage, bugs, vulnerabilities, hotspot, code_smells)
+VALUES (10, 0.39, 2, 0, 0, 2);
 
 UPDATE GEN
 SET NEXT_VAL = 59
